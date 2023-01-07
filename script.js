@@ -27,9 +27,9 @@ for (i=9; i <20; i++){
 
   /* This code block is interated 9 times and has three variables that change with each 
   FOR LOOP.  NOTE the use of the escape character of "\" as this string contains HTML with 
-  needed open and close paraentheses*/ 
-  var codeBlock = ("<div id=\"hour-" + [i] +'"'+ " class=\"row time-block" + tense +" \"><div class=\"col-2 col-md-1 hour text-center py-3\">" +calendarHour+ "</div><textarea id=\"text-area-" + [i] + '"' + "class=\"col-8 col-md-10 description\" rows=\"3\"> </textarea><button id=\"button-number-" + [i] + '"' + "class=\"btn saveBtn col-2 col-md-1\" aria-label=\"save\"><i class=\"fas fa-save\" aria-hidden=\"true\"></i></button></div>");
-  
+  needed open and close quotations*/ 
+  var codeBlock = ("<div id=\"hour-" + [i] +'"'+ " class=\"row time-block" + tense +" \"><div class=\"col-2 col-md-1 hour text-center py-3\">" +calendarHour+ "</div><textarea class=\"col-8 col-md-10 description\" rows=\"3\"> </textarea><button class=\"btn saveBtn col-2 col-md-1\" aria-label=\"save\"><i class=\"fas fa-save\" aria-hidden=\"true\"></i></button></div>");
+
   /* This appends the CodeBlock to the DIV with the class ".container" and essentially
   creates the calendar on the page.  NOTE: this did not work if the bootstrap tag of 
   px-5 is included in the selector*/
@@ -37,38 +37,14 @@ for (i=9; i <20; i++){
 
 }
 
-// $("#text-area-10").text("this is brad")
-
-// $("#button-number-9").click(function(){
-//     var inputText = $("#text-area-9").val();
-//     console.log(inputText);
-//   })
-
-// console.log($("#hour-8").children('textarea'));
-
-{/* <div class="container-lg px-5">
-      <div id="hour-8" class="row time-block past">
-        <div class="col-2 col-md-1 hour text-center py-3">8AM</div>
-        <textarea class="col-8 col-md-10 description" rows="3">TESTING</textarea>
-        <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-          <i class="fas fa-save" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div> */}
-
-
-//Gets the text that is in the text area of hour-8. 
-var xxx = $("#hour-8").children().eq(1).text()
-console.log("this is it " + xxx)
-
-var parentOfButton = $(".saveBtn").parent().attr('id');
-console.log(parentOfButton);
-
+/*This function retrives the text entered into the textarea of the save button that 
+is clicked*/
 $("button").on("click", function(){
-  var parentOfButton1 = $(this).parent().attr('id')
-  alert("this button was clicked  " + parentOfButton1)
-
-})
+  var parentOfButton = $(this).parent().attr('id');
+  var calendarEntry = $(this).prev('textarea').val();
+  console.log("This is the parent of the button: " + parentOfButton);
+  console.log("This is  the entry: " +calendarEntry);
+  })
 
 
   // TODO: Add a listener for click events on the save button. This code should
