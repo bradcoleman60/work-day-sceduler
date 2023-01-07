@@ -3,23 +3,23 @@
 // in the html.
 $(document).ready(function () {
 
-// Set date to current date and sends to webpage
-var currentDate = $.datepicker.formatDate ("DD MM d, yy", new Date());  
-$("#currentDay").text(currentDate);
+  // Set date to current date and sends to header
+  var currentDate = $.datepicker.formatDate ("DD MM d, yy", new Date());  
+  $("#currentDay").text(currentDate);
 
-//Iterates for the 8 hours that are displayed on calendar
-for (i=9; i <20; i++){
-  let currentHour = Number(dayjs().format("H"));
-  let calendarHour = dayjs().hour(8);
+  //Iterates for the 8 hours that are displayed on calendar
+  for (i=9; i <20; i++){
+    let currentHour = Number(dayjs().format("H"));
+    let calendarHour = dayjs().hour(8);
 
-   //This IF statement sets the current tense based on the current hour of the day
-  if ([i] < currentHour) {
-    var tense = " past"
-  } else if([i] > currentHour){
-    var tense = " future"
-  } else {
-    var tense = " present"
-  }
+    //This IF statement sets the current tense based on the current hour of the day
+    if ([i] < currentHour) {
+      var tense = " past"
+    } else if([i] > currentHour){
+      var tense = " future"
+    } else {
+      var tense = " present"
+    }
   /*This iterates to show the hours of 9AM to 5PM on the calendar page 
   the format("hA") property converts the hour from miltary to standard time
   including an indicator of AM or PM. */
@@ -28,7 +28,7 @@ for (i=9; i <20; i++){
   /* This code block is interated 9 times and has three variables that change with each 
   FOR LOOP.  NOTE the use of the escape character of "\" as this string contains HTML with 
   needed open and close quotations*/ 
-  var codeBlock = ("<div id=\"hour-" + [i] +'"'+ " class=\"row time-block" + tense +" \"><div class=\"col-2 col-md-1 hour text-center py-3\">" +calendarHour+ "</div><textarea class=\"col-8 col-md-10 description\" rows=\"3\"> </textarea><button class=\"btn saveBtn col-2 col-md-1\" aria-label=\"save\"><i class=\"fas fa-save\" aria-hidden=\"true\"></i></button></div>");
+  var codeBlock = ("<div id=\"hour-" + [i] +'"'+ " class=\"row time-block" + tense +" \"><div class=\"col-2 col-md-1 hour text-center py-3\">" + calendarHour + "</div><textarea class=\"col-8 col-md-10 description\" rows=\"3\"> </textarea><button class=\"btn saveBtn col-2 col-md-1\" aria-label=\"save\"><i class=\"fas fa-save\" aria-hidden=\"true\"></i></button></div>");
 
   /* This appends the CodeBlock to the DIV with the class ".container" and essentially
   creates the calendar on the page.  NOTE: this did not work if the bootstrap tag of 
@@ -37,14 +37,33 @@ for (i=9; i <20; i++){
 
 }
 
-/*This function retrives the text entered into the textarea of the save button that 
-is clicked*/
-$("button").on("click", function(){
-  var parentOfButton = $(this).parent().attr('id');
-  var calendarEntry = $(this).prev('textarea').val();
-  console.log("This is the parent of the button: " + parentOfButton);
-  console.log("This is  the entry: " +calendarEntry);
+  /*This function retrives the text entered into the textarea of the save button that 
+  is clicked*/
+  $("button").on("click", function(){
+    var parentOfButton = $(this).parent().attr('id');
+    var calendarEntry = $(this).prev('textarea').val();
+    console.log("This is the parent of the button: " + parentOfButton);
+    console.log("This is  the entry: " +calendarEntry);
+    localStorage.setItem(parentOfButton,JSON.stringify(calendarEntry));
+    var inlocalStorage = JSON.parse(localStorage.getItem(parentOfButton))
+    console.log("this is from local storage: "+ inlocalStorage);
   })
+
+
+
+  console.log("this is in localsytorage 9 :  " + JSON.parse(localStorage.getItem("hour-9")));
+  console.log("this is in localsytorage 10:  " + JSON.parse(localStorage.getItem("hour-10")));
+  console.log("this is in localsytorage 11:  " + JSON.parse(localStorage.getItem("hour-11")));
+  console.log("this is in localsytorage 12:  " + JSON.parse(localStorage.getItem("hour-12")));
+  console.log("this is in localsytorage 13:  " + JSON.parse(localStorage.getItem("hour-13")));
+  console.log("this is in localsytorage 14:  " + JSON.parse(localStorage.getItem("hour-14")));
+  console.log("this is in localsytorage 15:  " + JSON.parse(localStorage.getItem("hour-15")));
+  console.log("this is in localsytorage 16:  " + JSON.parse(localStorage.getItem("hour-16")));
+  console.log("this is in localsytorage 17:  " + JSON.parse(localStorage.getItem("hour-17")));
+
+
+
+
 
 
   // TODO: Add a listener for click events on the save button. This code should
