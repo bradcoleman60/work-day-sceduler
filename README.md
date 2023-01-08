@@ -21,7 +21,7 @@ The goal of this project was to add functionality to starter code that includes 
 
 The following is code that I created that I would like to highlight. This is the essence of the JavaScript code and performs multiple steps within one FOR LOOP statement. I observed that the HTML code for each hourly time block was almost identical with the exception of (1) the ID of the parent DIV (which ranges from hour-9 to hour-17), (2) the text that labels the hourly block (which ranges from 9AM to 5PM) and the tense of the hour (that ranges from Past to Present to Future).  
 
-Instead of replicating, or "hardcoding" the this HTML block for each of the 9 hours on the index.html page, I created a FOR LOOP that appends the container DIV with the HTML block for each hourly block.  In doing this, I was also able to change the 3 variables noted above (parent ID, tense, and time label) in each iteration of the FOR LOOP. This enables me to easily add or subtract hourly blocks if I want to lengthen or shorten the business day.  
+Instead of replicating, or "hardcoding" this HTML block for each of the 9 hours on the index.html page, I created a FOR LOOP that appends the container DIV with the HTML block for each hourly block.  In doing this, I was also able to change the 3 variables noted above (parent ID, tense, and time label) in each iteration of the FOR LOOP. This enables me to easily add or subtract hourly blocks if I want to lengthen or shorten the business day.  
 
 I utilized day.js to help me with retrieving, formatting and displaying dates and times, in addition to comparing the current time to the hourly blocks that are displayed (needed to dynamically change the background color of the respective hourly block).  
 
@@ -65,7 +65,7 @@ Lastly, the FOR LOOP also retrieves any appointments previously stored in localS
 ```
 **Additional Excerpt of JavaScript Code:** 
 
-The JavaScript code below is code that I spent a lot of time with. This was the first time that I used the jquery THIS method which I found to be very useful in traversing the DOM to ensure I was selecting the correct elements and attributes.  I researched the methods to select DOM elements include the use of "parent()" that I used to select the parent ID of the save button clicked and the "prev()" method that I used to get the content (or value) that was entered by the user in the text area.  NOTE: I learned that I could include in the parentheses of this prev() method the type of HTML element (in this case the 'textarea' element) to help.   
+The JavaScript code below is code that I spent a lot of time with. This was the first time that I used the jquery THIS method which I found to be very useful in traversing the DOM to ensure I was selecting the correct elements and attributes.  I researched the methods to select DOM elements including the use of ".parent()" that I used to select the parent ID of the save button clicked and the ".prev()" method that I used to get the content (or value) that was entered by the user in the text area.  NOTE: I learned that I could include in the parentheses of this prev() method the type of HTML element (in this case the 'textarea' element) to help.   
 
 ```
 /*This function retrieves the parent ID and text entered into the textarea of the save button that is clicked.  The function then saves the text entered into a text area to localStorage using the associated hour-X as the key */
@@ -86,15 +86,15 @@ To test to ensure the code rendered the desired output I iterated a series of te
 
 2. WHEN I scroll down THEN I am presented with time blocks for standard business hours
 
- - **Completed**.  Scrolling down I observe there is a block for each hour in a standard business day.  The blocks start with the 9AM hour and go through and include the 5PM hour.  
+ - **Completed**.  Scrolling down I observe there is a block for each hour in a standard business day.  The blocks start with the 9AM hour and goes through and includes the 5PM hour.  
 
 3. WHEN I view the time blocks for that day THEN each time block is color-coded to indicate whether it is in the past, present, or future
 
- - **Completed**.  The Javascript uses and IF statement to compare the hour of the current time to the hour associated with each respective time block.  If the hour has passed the block is shaded grey.  If the hour associated with the block is the current hour of the day, then the block is shaded red.  If the hour of the block is in the future then the block is shaded green.  I observed this formatting occurring over the course of several days.   
+ - **Completed**.  The Javascript uses an IF statement to compare the hour of the current time to the hour associated with each respective time block.  If the hour has passed the block is shaded grey.  If the hour associated with the block is the current hour of the day, then the block is shaded red.  If the hour of the block is in the future then the block is shaded green.  I observed this formatting occurring over the course of several days.   
 
 4. WHEN I click into a time block THEN I can enter an event
 
- - **Completed**.  The middle row of the hourly block is a text area in which the user can enter an event.  I tested each hourly block to ensure this functionality exists.  
+ - **Completed**.  The middle column of the hourly block is a text area in which the user can enter an event.  I tested each hourly block to ensure this functionality worked.  
 
 5. WHEN I click the save button for that time block THEN the text for that event is saved in local storage
 
@@ -113,7 +113,9 @@ I used many useful references in completing this project including the following
 
 # **Learnings**
 
-I found this project to be very interesting.  As enumerated above this was the first time I used the THIS function in traversing the DOM to select elements to retrieve or set an element on the HTML page. Additionally, I learned how to dynamically render HTML to the page using a FOR LOOP instead of hardcoding several lines of similar HTML code.  Lastly, I learned how to use a variable in a jquery select statement.  When I first endeavored to do this, I tried to create a string with the require ID tag.  For example ```$("#hour-9")```.  This had to be dynamically rendered so that the entered text (appointment) could be saved to localStorage with a key that was unique to that hour. After much research, I discovered that this could be accomplished by ```$('#' + parentID)```.  Note there are NO double quotes around the ID tag required when using a variable in a jquery selector.    
+I found this project to be very interesting.  As enumerated above this was the first time I used the THIS function in traversing the DOM to select elements to retrieve or set an element on the HTML page. Additionally, I learned how to dynamically render HTML to the page using a FOR LOOP instead of hardcoding several lines of similar HTML code.  
+
+Lastly, I learned how to use a variable in a jquery select statement.  When I first endeavored to do this, I tried to create a string with the require parent ID tag.  I set a variable that was equal to the string needed in the jquery select statement.  For example ```$("#hour-9")``` (Please note the parentheses around this argument).  This variable had to be dynamically rendered so that the entered text (appointment) could be saved to localStorage with a key that was unique to that hour. After much research, I discovered that this could be accomplished by ```$('#' + parentID)```.  Note there are NO double quotes around the ID tag required when using a variable in a jquery selector.    
 
 # **About the Author**
 
